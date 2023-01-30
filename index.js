@@ -174,6 +174,9 @@ app.get('/movies/directors/:Name',
 app.put('/users/:Username',
   passport.authenticate('jwt', { session: false}),
   (req, res) => {
+
+  let hashedPassword = Users.hashPassword(req.body.Password);
+
   Users.findOneAndUpdate({Username: req.params.Username},
     { $set:
       {
@@ -266,11 +269,7 @@ app.use((err, req, res, next) => {
 
 // listen for requests
 
-app.listen(8080, () => {
-  console.log('Your app is listening on port 8080');
+const port = process.env.PORT || 8080;
+app.listen(port, '0.0.0.0',() => {
+  console.log('Listening on Port ' + port);
 });
-
-// const port = process.env.PORT || 8080;
-// app.listen(port, '0.0.0.0',() => {
-//   console.log('Listening on Port ' + port);
-// });
