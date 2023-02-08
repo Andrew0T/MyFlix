@@ -116,7 +116,7 @@ app.get('/users/:Username',
 // Reads the list of ALL movies
 
 app.get('/movies', 
-  // passport.authenticate('jwt', { session: false}),
+  passport.authenticate('jwt', { session: false}),
   (req, res) => {
   Movies.find()
   .then((movies) => {
