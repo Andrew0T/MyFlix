@@ -22,16 +22,6 @@ const cors = require('cors');
 let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
 
 app.use(cors());
-// '{
-//   origin: (origin, callback) => {
-//     if(!origin) return callback(null, true);
-//     if(allowedOrigins.indexOf(origin) === -1){ // If a specific origin isn’t found on the list of allowed origins
-//       let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
-//       return callback(new Error(message ), false);
-//     }
-//     return callback(null, true);
-//   }
-// }));'
 
 let auth = require('./auth.js')(app); // Imports local auth file
 const passport = require('passport');
@@ -90,7 +80,9 @@ app.post('/users',
 
 // Gets all users
 
-app.get('/users', (req, res) => {
+app.get('/users',
+ passport.authenticate('jwt', { session: false }),
+ (req, res) => {
   Users.find()
     .then((users) => {
       res.status(201).json(users);
@@ -216,7 +208,6 @@ app.post('/users/:Username/movies/:MovieID',
       }
     });
   });
-
 
 // Deletes Users favorite movie
 
