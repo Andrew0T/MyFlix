@@ -12,7 +12,7 @@ const Users = Models.User;
 mongoose.connect(process.env.CONNECTION_URI,{
    useNewUrlParser: true,
    useUnifiedTopology: true,
-   dbName: "myflixdb" },
+   dbName: "myFlixDB" },
    () => {console.log('connected to DB!')
 });
 
