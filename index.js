@@ -9,17 +9,18 @@ const app = express();
 const Movies = Models.Movie;
 const Users = Models.User;
 
-mongoose.connect( process.env.CONNECTION_URI,{
+mongoose.connect(process.env.CONNECTION_URI,{
    useNewUrlParser: true,
-   useUnifiedTopology: true
- });
+   useUnifiedTopology: true,
+   dbName: "myflixdb" },
+   () => {console.log('connected to DB!')
+  });
 
 app.use(morgan('common'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
 
 app.use(cors());
 
