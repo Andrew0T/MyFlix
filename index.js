@@ -14,7 +14,7 @@ mongoose.connect(process.env.CONNECTION_URI,{
    useUnifiedTopology: true,
    dbName: "myflixdb" },
    () => {console.log('connected to DB!')
-  });
+});
 
 app.use(morgan('common'));
 app.use(bodyParser.json());
@@ -109,7 +109,7 @@ app.get('/users/:Username',
 
 // Reads the list of ALL movies
 
-app.get('/movies', 
+app.get('/movies',
   passport.authenticate('jwt', { session: false}),
   (req, res) => {
   Movies.find()
@@ -205,7 +205,7 @@ app.post('/users/:Username/movies/:MovieID',
         console.error(err);
         res.status(500).send('Error:' + err);
       }else{
-        res.json(updatedUser); 
+        res.json(updatedUser);
       }
     });
   });
@@ -224,7 +224,7 @@ app.delete('/users/:Username/movies/:MovieID',
         console.error(err);
         res.status(500).send('Error:' + err);
       }else{
-        res.json(updatedUser); 
+        res.json(updatedUser);
       }
     });
   });
@@ -235,7 +235,7 @@ app.delete('/users/:Username',
   passport.authenticate('jwt', { session: false}),
   (req, res) => {
   Users.findOneAndRemove({Username: req.params.Username})
-  .then((user) =>{  
+  .then((user) =>{
   if (!user) {
     res.status(400).send(req.params.Username +' was not found.');
   } else {
