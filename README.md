@@ -15,3 +15,5 @@ Movie_Api
         Allow existing users to deregister and delete their profile
 
     Technologies used: JavaScript, Node.js, Express, MongoDB, Mongoose
+
+    Link to: https://andrew0t.github.io/myFlix.api/
