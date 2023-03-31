@@ -1,4 +1,4 @@
-Movie_Api
+myFlix_Api
 
     The server-side component of a "myFlix App" web application. The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies.
 
@@ -17,3 +17,4 @@ Movie_Api
     Technologies used: JavaScript, Node.js, Express, MongoDB, Mongoose
 
     Link to: https://andrew0t.github.io/myFlix.api/
+    Further Documentation can be viewed here: https://andrew0t.github.io/myFlix.api/public/documentation.html
